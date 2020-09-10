@@ -22,3 +22,4 @@ try {
 catch(HTTP_Request2_Exception $e) {
   echo 'Error: ' . $e->getMessage();
 }
+?>
