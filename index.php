@@ -1,17 +1,22 @@
 <?php
 
-$url = "http://www.168bikeshop.com/aboutus";
+$curl = curl_init();
 
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "http://www.168bikeshop.com/aboutus",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "GET",
+  CURLOPT_HTTPHEADER => array(
+    "Cookie: PHPSESSID=3krsovbdftdug9ofn50nr5sh7s; _lnw_sess_637277_www_168bikeshop_com_=DTsAOQQ8UmgHLFAjBm4CYlI%2FW3QEIABoUzhTClRvATRWIQprAn4HOFEwUGkBIwcxBWZWYQZmUjMLawkmVT1TLQc0ATYEZlM4BnFcdVI4B3ENKQBqBGtSPAcIUDkGMAJ2Uj5bJQRtAD5TaFNvVCQBaFYwCjYCOAc7UTFQNgE4B2YFN1ZmBm1SNQs%2FCTFVP1NmBz0BMQRmU2AGYVwwUm0HOw07ADAEMVIwBzRQZwZlAnZSPlslBG0APFNqU29UJAE5VnMKDwJsB2ZRYlAhAWQHdAUmVnQGb1J3C2YJNVU1U2QHLAE2BG5TMgZ9XDdSbwc6DXQANgQqUmMHY1BhBnYCb1J2W2wEZgA9U2BTd1RzASNWZgoiAlIHY1FhUDYBbwdzBXdWbQYnUj4Lbgk1VTxTfAdeAWgEJVN2Bj5cZ1IzB1ANLwBtBHBSOwc6UDUGewJjUitbZARhACNTb1N3VD0BI1Y5CmECPgc4USRQPwFgB3QFIVYJBjVSZwsoCW1VcFM3B3oBfgR0UzkGIFw8UmwHMg1gACEENVJnB25QaQZjAmVSMltiBGQAOVN4U25UdQFqVjoKagIvB3JRblAjAXIHYgUmViUGPVJgC34JP1V1U2QHPAExBGxTIAZgXG1SLwdxDTUAdQRmUjYHMVAkBjACIVJiW28EOABrUzRTYFQ2AT5WcQplAn4HalExUCABIwc8BSZWbAZgUj4LfglpVWlTOgdrASUEbVNxBmlcMVJnByANKQBmBHdSIQc%2BUD8GOgJ2Uj5bJQRtADpTYFN3VHMBI1ZmCiICUgdrUWJQcQE6B3QFb1ZnBm5SJgtsCSZVPVMj; _lnwacct_637277_www_168bikeshop_com___ts=3e7e04456cb02c00ad08bd648273191c; _lnwacct_637277_www_168bikeshop_com___ie=Lnw"
+  ),
+));
 
-//for debug only!
-curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+$response = curl_exec($curl);
 
-$resp = curl_exec($curl);
 curl_close($curl);
-var_dump($resp);
-
-?>
+echo $response;
